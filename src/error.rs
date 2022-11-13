@@ -1,10 +1,13 @@
-use crate::consts::msg;
+pub mod io;
+
+use crate::consts::*;
 use thiserror::Error;
 
 pub type Result<T, E = Error> = std::result::Result<T, E>;
 
-#[derive(Debug, Error, PartialEq)]
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, Debug, Error, PartialEq)]
 pub enum Error {
-    #[error("{}", msg::SAMPLE_ERROR)]
-    SampleError,
+    #[error("{}: {:?}: ", msg::ERR_IO, 0)]
+    IoError(#[from] io::Error),
 }

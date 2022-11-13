@@ -1,4 +1,4 @@
-# safe_arithmetic
+# safe_arith
 
 ## License
 Licensed under either:

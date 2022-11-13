@@ -14,6 +14,7 @@
     clippy::match_bool,
     clippy::missing_errors_doc,
     clippy::module_name_repetitions,
+    clippy::similar_names,
     clippy::wildcard_imports
 )]
 // To use the `unsafe` keyword, do not remove the `unsafe_code` attribute entirely.
@@ -29,4 +30,11 @@
 
 mod consts;
 mod error;
-pub use error::{Error, Result};
+mod policy;
+
+pub use arith_traits::{
+    ICheckedOps, IMinMax, IOverflowingOps, ISaturatingOps, IWrappingOps,
+};
+
+pub use error::{Error, Result, io};
+pub use policy::{OverflowingPolicy, WrappingPolicy};
