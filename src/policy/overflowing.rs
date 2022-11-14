@@ -4,7 +4,7 @@ use core::{
     ops::Add,
 };
 
-use arith_traits::IOverflowingOps;
+use safe_arith_traits::IOverflowingOps;
 
 // #[derive(Clone, Copy, Debug, PartialEq, PartialOrd)] implemented conditionally below.
 // Note even for `T: Eq`, `(T, true) != (T, true)` since the overflow bit does not track # of wraps.
@@ -41,13 +41,13 @@ impl<T: Copy> Copy for OverflowingPolicy<T> {}
 
 impl<T: Debug> Debug for OverflowingPolicy<T> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.debug_tuple("Overflowing").field(&self.0).field(&self.1).finish()
+        f.debug_tuple("OverflowingPolicy").field(&self.0).field(&self.1).finish()
     }
 }
 
 impl<T: Display> Display for OverflowingPolicy<T> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "({}, {})", self.0, self.1)
+        write!(f, "OverflowingPolicy({}, {})", self.0, self.1)
     }
 }
 

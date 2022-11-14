@@ -1,20 +1,21 @@
 # safe_arith_policies
-This crate defines wrappers implementing arithmetic overflow policies in support of ergonomic, 
-fully safe arithmetic in Rust.
+This crate defines wrappers implementing arithmetic overflow policies in support of fully safe, 
+ergonomic arithmetic in Rust.
+
+Fully safe arithmetic is defined as arithmetic which will *fail to compile* if there is any
+possibility of an overflow not handled by a policy specifically requested by the developer.
 
 Ergonomic means a value wrapped with one of the following policies
-is automatically subject to the specified overflow behavior even when using standard arithmetic
-operators.
-
-Fully safe arithmetic is defined as arithmetic which will fail to compile if there is any
-possibility of an overflow not specifically requested by the developer.
+utilized standard arithmetic operators but is still automatically covered by the specified overflow
+policy behavior.
 
 The arithmetic overflow policies are:
-  * `CheckedPolicy`
-  * `OverflowingPolicy`
-  * `PanickingPolicy`
-  * `SaturatingPolicy`
-  * `WrappingPolicy`
+
+  - [x] `CheckedPolicy`
+  - [x] `OverflowingPolicy`
+  - [x] `PanickingPolicy`
+  - [x] `SaturatingPolicy`
+  - [x] `WrappingPolicy`
 
 ## License
 Licensed under either:

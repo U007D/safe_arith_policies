@@ -11,7 +11,7 @@ repository = "https://github.com/u007d/safe_arith"
 version = "0.2.0"
 
 [dependencies]
-arith_traits = { version = "0.4.0", git = "https://github.com/u007d/arith_traits.git" }
+safe_arith_traits = { version = "0.4.0", git = "https://github.com/u007d/safe_arith_traits.git" }
 thiserror = "1.0.37"
 
 [dev-dependencies]

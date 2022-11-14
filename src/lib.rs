@@ -1,3 +1,4 @@
+#![feature(once_cell)]
 #![warn(clippy::all, clippy::nursery, clippy::pedantic, rust_2018_idioms)]
 // Safety-critical application lints
 #![deny(
@@ -8,10 +9,12 @@
     clippy::unwrap_used
 )]
 #![allow(
+    clippy::enum_glob_use,
     clippy::equatable_if_let,
     clippy::implicit_return,
     clippy::iter_nth_zero,
     clippy::match_bool,
+    clippy::match_like_matches_macro,
     clippy::missing_errors_doc,
     clippy::module_name_repetitions,
     clippy::similar_names,
@@ -32,9 +35,7 @@ mod consts;
 mod error;
 mod policy;
 
-pub use arith_traits::{
-    ICheckedOps, IMinMax, IOverflowingOps, ISaturatingOps, IWrappingOps,
-};
+pub use safe_arith_traits::{ICheckedOps, IMinMax, IOverflowingOps, ISaturatingOps, IWrappingOps};
 
-pub use error::{Error, Result, io};
+pub use error::{io, Error, Result};
 pub use policy::{OverflowingPolicy, WrappingPolicy};

@@ -9,7 +9,7 @@ use core::{
     ops::Add,
 };
 
-use arith_traits::IWrappingOps;
+use safe_arith_traits::IWrappingOps;
 
 // #[derive(Clone, Copy, Debug, PartialEq, PartialOrd)] implemented conditionally below.
 pub struct WrappingPolicy<T>(pub T);
@@ -35,12 +35,14 @@ impl<T: Copy> Copy for WrappingPolicy<T> {}
 
 impl<T: Debug> Debug for WrappingPolicy<T> {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        f.debug_tuple("Wrapping").field(&self.0).finish()
+        f.debug_tuple("WrappingPolicy").field(&self.0).finish()
     }
 }
 
 impl<T: Display> Display for WrappingPolicy<T> {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result { write!(f, "({})", self.0) }
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "WrappingPolicy({})", self.0)
+    }
 }
 
 impl<T> From<T> for WrappingPolicy<T> {
